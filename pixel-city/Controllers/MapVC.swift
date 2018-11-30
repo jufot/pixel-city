@@ -47,7 +47,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         collectionView?.dataSource = self
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
-        //Registers the collectionView so it can define the sourceRect
+        //Registers the collectionView so it can define the sourceView for the sourceRect (rectangle for the image pop up)
         registerForPreviewing(with: self, sourceView: collectionView!)
         
         pullUpView.addSubview(collectionView!)
@@ -334,6 +334,7 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
+//Extention class for 3D touch/previewing
 extension MapVC: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         
