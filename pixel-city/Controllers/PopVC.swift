@@ -12,16 +12,21 @@ class PopVC: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var popImageView: UIImageView!
     
+    @IBOutlet weak var popTitleLbl: UILabel!
     var passedImage: UIImage!
+    var passedTitle: String!
     
     //A function that can set a property that hold the image so it can fill the imageView
-    func initData(forImage image: UIImage) {
+    func initData(forImage image: UIImage, forTitle title: String) {
         self.passedImage = image
+        self.passedTitle = title
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         popImageView.image = passedImage
+        popTitleLbl.text = passedTitle!
+        popTitleLbl.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         addDoubleTap()
     }
     

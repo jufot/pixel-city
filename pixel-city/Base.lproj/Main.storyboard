@@ -116,11 +116,23 @@
                                     <constraint firstAttribute="height" constant="30" id="pso-cp-dt5"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lq-HT-9P0">
+                                <rect key="frame" x="48" y="28" width="318" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="318" id="OQq-bb-clV"/>
+                                    <constraint firstAttribute="height" constant="121" id="VnB-qC-zHF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Qqn-6q-boq" firstAttribute="top" secondItem="Sna-aT-puW" secondAttribute="top" id="7WE-ci-MMJ"/>
                             <constraint firstItem="2sP-XE-wyH" firstAttribute="bottom" secondItem="zCu-a9-pWl" secondAttribute="bottom" constant="20" id="HWq-vZ-H70"/>
+                            <constraint firstItem="7lq-HT-9P0" firstAttribute="top" secondItem="2sP-XE-wyH" secondAttribute="top" constant="8" id="VcT-Yd-hDJ"/>
+                            <constraint firstItem="7lq-HT-9P0" firstAttribute="centerX" secondItem="Sna-aT-puW" secondAttribute="centerX" id="Whf-X1-H2U"/>
                             <constraint firstItem="Qqn-6q-boq" firstAttribute="trailing" secondItem="2sP-XE-wyH" secondAttribute="trailing" id="eFn-q4-LAN"/>
                             <constraint firstItem="Qqn-6q-boq" firstAttribute="bottom" secondItem="2sP-XE-wyH" secondAttribute="bottom" id="hwf-Jm-mnC"/>
                             <constraint firstItem="Qqn-6q-boq" firstAttribute="leading" secondItem="2sP-XE-wyH" secondAttribute="leading" id="rXf-VO-Xpy"/>
@@ -130,6 +142,7 @@
                     </view>
                     <connections>
                         <outlet property="popImageView" destination="Qqn-6q-boq" id="Cbb-p6-pR9"/>
+                        <outlet property="popTitleLbl" destination="7lq-HT-9P0" id="Jmg-EH-Iw2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gA1-FR-cOy" userLabel="First Responder" sceneMemberID="firstResponder"/>

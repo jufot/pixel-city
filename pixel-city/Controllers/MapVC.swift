@@ -33,6 +33,7 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     
     var imageURLArray = [String]()
     var imageArray = [UIImage]()
+    var imageTitleArray = [String]()
     
     
     override func viewDidLoad() {
@@ -200,6 +201,7 @@ extension MapVC: MKMapViewDelegate {
         //Clears images and updates it
         imageURLArray = []
         imageArray = []
+        imageTitleArray = []
         
         collectionView?.reloadData()
         
@@ -250,7 +252,9 @@ extension MapVC: MKMapViewDelegate {
             let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
             for photo in photosDictArray {
                 let postURL = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
+                let postTitle = "\(photo["title"]!)"
                 self.imageURLArray.append(postURL)
+                self.imageTitleArray.append(postTitle)
             }
             handler(true)
         }
@@ -264,6 +268,7 @@ extension MapVC: MKMapViewDelegate {
                 guard let image = response.result.value else { return }
                 self.imageArray.append(image)
                 self.progressLbl?.text = "\(self.imageArray.count)/40 IMAGES DOWNLOADED"
+                
                 
                 //Checking you have retrieved all the images
                 if self.imageArray.count == self.imageURLArray.count {
@@ -329,7 +334,7 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else { return }
-        popVC.initData(forImage: imageArray[indexPath.row])
+        popVC.initData(forImage: imageArray[indexPath.row], forTitle: "\(imageTitleArray[indexPath.row])")
         present(popVC, animated: true, completion: nil)
     }
 }
@@ -345,7 +350,8 @@ extension MapVC: UIViewControllerPreviewingDelegate {
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else { return nil }
         
         //Passes image into function for the PopVC view controller
-        popVC.initData(forImage: imageArray[indexPath.row])
+        popVC.initData(forImage: imageArray[indexPath.row], forTitle: "\(imageTitleArray[indexPath.row])")
+
         
         //Source Rect is the rectangle that will zoom up when everything else become blurry
         previewingContext.sourceRect = cell.contentView.frame
