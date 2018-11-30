@@ -6,6 +6,7 @@
 //  Copyright © 2018 Jeremiah Ufot. All rights reserved.
 //
 
+//Finished
 import UIKit
 
 class PopVC: UIViewController, UIGestureRecognizerDelegate {
